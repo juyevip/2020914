@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.chinasoft.ssm.dao.IUserDao">
+ 
+ <insert id="register" parameterType="MyUser">
+   insert into myusertable (id,uname,upwd) values(null,#{uname},#{pwd})
+ </insert>
+ <select id="findAllUser" resultType="MyUserTable">
+   select  * from myusertable
+ </select>
+  <select id="Login" parameterType="MyUser" resultType="MyUser">
+     select * from myusertable where uname=#{uname} and upwd =#{pwd}
+  </select>
+  <select id="selectAllUserByPage" resultType="map">
+     select * from myusertable limit #{startIndex},#{perPageSize}
+  </select>
+  <select id="selectAll" resultType="map">
+    select  * from myusertable
+  </select>
+  <select id="loginUser" parameterType="MyUser" resultType="MyUserTable">
+     select  * from myusertable where uname=#{uname} and upwd=#{pwd}
+  </select>
+ </mapper>
